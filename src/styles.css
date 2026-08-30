@@ -1,0 +1,274 @@
+:root {
+  --bg: #ffffff;
+  --surface: #f7f7f5;
+  --border: #e3e2df;
+  --text: #37352f;
+  --muted: #787672;
+  --accent: #2f6fed;
+  --match: #fff3c4;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+.app {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.toolbar__title {
+  flex: 1 1 320px;
+  font-size: 28px;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  padding: 4px 0;
+  color: var(--text);
+  background: transparent;
+}
+
+.toolbar__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  font: inherit;
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--surface);
+}
+
+button:disabled {
+  color: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 28px;
+  margin-top: 20px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.block-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.block-row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: start;
+  padding: 6px 8px;
+  border-left: 3px solid transparent;
+  border-radius: 4px;
+}
+
+.block-row--active {
+  border-left-color: var(--accent);
+  background: var(--surface);
+}
+
+.block-row--match {
+  background: var(--match);
+}
+
+.block-row__gutter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-top: 8px;
+}
+
+.block-row__index {
+  font-size: 11px;
+  color: var(--muted);
+  min-width: 18px;
+}
+
+.block-row__input {
+  width: 100%;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  resize: vertical;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 6px 8px;
+  background: transparent;
+  color: inherit;
+}
+
+.block-row__input:focus {
+  border-color: var(--border);
+  outline: none;
+  background: var(--bg);
+}
+
+.block-row__input--heading {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.block-row__actions {
+  display: flex;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+.block-row__actions button {
+  padding: 4px 7px;
+}
+
+select {
+  font: inherit;
+  font-size: 12px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  background: var(--surface);
+}
+
+.panel__heading {
+  margin: 0 0 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.panel__input {
+  width: 100%;
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.panel__summary {
+  margin: 10px 0 4px;
+  font-size: 13px;
+}
+
+.panel__summary--muted {
+  color: var(--muted);
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  padding: 3px 0;
+}
+
+.stat-row__label {
+  color: var(--muted);
+}
+
+.stat-row__value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.result-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-list__item {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  align-items: baseline;
+}
+
+.result-list__item--active {
+  border-color: var(--accent);
+}
+
+.result-list__index {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.result-list__preview {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.result-list__count {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+.empty-state {
+  color: var(--muted);
+  font-size: 14px;
+}
